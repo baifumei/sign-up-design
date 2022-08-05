@@ -15,7 +15,7 @@ struct ContentView: View {
                     HStack {
                         Image("logo")
                             .resizable()
-                            .frame(width: 120, height: 120)
+                            .frame(width: 150, height: 150)
                     }
                     ZStack {
                         //
@@ -36,13 +36,13 @@ struct ContentView: View {
                         }.padding(5)
                     }
                     VStack {
-                        HStack(spacing: 20) {
+                        HStack(spacing: 25) {
                             Button(action: {
                                 //
                             }) {
                             Image("AppleLogo")
                                 .resizable()
-                                .frame(width: 40, height: 50)
+                                .frame(width: 35, height: 45)
                                 .offset(y: -3)
                             }
                             Button(action: {
@@ -50,14 +50,14 @@ struct ContentView: View {
                             }) {
                             Image("FacebookLogo")
                                 .resizable()
-                                .frame(width: 50, height: 50)
+                                .frame(width: 45, height: 45)
                             }
                             Button(action: {
                                 //
                             }) {
                             Image("TwitterLogo")
                                 .resizable()
-                                .frame(width: 50, height: 40)
+                                .frame(width: 45, height: 35)
                                 .offset(y: 3)
                             }
                             Button(action: {
@@ -65,7 +65,7 @@ struct ContentView: View {
                             }) {
                             Image("VKLogo")
                                 .resizable()
-                                .frame(width: 50, height: 50)
+                                .frame(width: 45, height: 45)
                             }
                         }
                     }.padding(.bottom)
@@ -77,6 +77,30 @@ struct ContentView: View {
 
 
 
+
+struct CShape1: Shape {
+    func path(in rect: CGRect) -> Path {
+        
+        return Path { path in
+            path.move(to: CGPoint(x: rect.width, y: 100))
+            path.addLine(to: CGPoint(x: rect.width, y: rect.height))
+            path.addLine(to: CGPoint(x: 0, y: rect.height))
+            path.addLine(to: CGPoint(x: 0, y: 0))
+        }
+    }
+}
+
+struct CShape2: Shape {
+    func path(in rect: CGRect) -> Path {
+        
+        return Path { path in
+            path.move(to: CGPoint(x: 0, y: 100))
+            path.addLine(to: CGPoint(x: 0, y: rect.height))
+            path.addLine(to: CGPoint(x: rect.width, y: rect.height))
+            path.addLine(to: CGPoint(x: rect.width, y: 0))
+        }
+    }
+}
 
 
 
