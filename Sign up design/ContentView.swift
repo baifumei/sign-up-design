@@ -10,12 +10,13 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         GeometryReader { _ in
-            VStack(spacing: 15) {
+            VStack() {
                 Image("logo")
                     .resizable()
                     .frame(width: 150, height: 150)
+                
                 ZStack {
-                    //
+                    SignIn(index: 0)
                 }
                 
                 Spacer()
@@ -98,7 +99,87 @@ struct CShape2: Shape {
     }
 }
 
-
+struct SignIn: View {
+    @State var index: Int
+    @State var email = ""
+    @State var password = ""
+    
+    var body: some View {
+        ZStack {
+            VStack {
+                HStack {
+                    VStack(spacing: 5) {
+                        Text("Sign in")
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .foregroundColor(self.index == 0 ? .white : .gray)
+                        
+                        Capsule()
+                            .fill(self.index == 0 ? Color("Color3") : Color.clear)
+                            .frame(width: 100, height: 4)
+                    }
+                    
+                    Spacer()
+                }.padding(.top, 25)
+                
+                VStack {
+                    HStack {
+                        Image(systemName: "envelope.fill")
+                        TextField("Enter your login", text: self.$email)
+                    }
+                    Divider()
+                        .frame(height: 2)
+                        .background(Color("Color3"))
+                }.padding(.horizontal).padding(.top, 40)
+                
+                VStack {
+                    HStack {
+                        Image(systemName: "eye.slash.fill")
+                        SecureField("Enter your password", text: $password)
+                    }
+                    Divider()
+                        .frame(height: 2)
+                        .background(Color("Color3"))
+                }.padding(.horizontal).padding(.top, 30)
+                
+                HStack {
+                    Spacer(minLength: 0)
+                    
+                    Button(action: {
+                        //
+                    }) {
+                        Text("Forget password?")
+                            .foregroundColor(Color.white.opacity(0.6))
+                    }
+                }.padding(.horizontal).padding(.top, 30)
+            }
+            .padding().padding(.bottom, 65)
+            .background(Color("Color2"))
+            .clipShape(CShape1())
+            .contentShape(CShape1())
+            .shadow(color: Color.white.opacity(0.6), radius: 5, x: 0, y: -5)
+            .onTapGesture {
+                self.index = 0
+            }
+            .cornerRadius(35)
+            .padding(.horizontal)
+            
+            Button(action: {
+                //
+            }) {
+                Text("SIGN IN")
+                    .foregroundColor(.white)
+                    .fontWeight(.bold)
+                    .padding(.vertical)
+                    .padding(.horizontal, 30)
+                    .background(Color("Color3"))
+                    .clipShape(Capsule())
+                    .shadow(color: .white, radius: 5, x: 0, y: 0)
+            }
+            .offset(y: 180)
+        }
+    }
+}
 
 
 
