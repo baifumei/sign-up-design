@@ -16,15 +16,15 @@ struct ContentView: View {
             VStack() {
                 Image("logo")
                     .resizable()
-                    .frame(width: 130, height: 140)
-                    .padding(.bottom, 5)
+                    .frame(width: 120, height: 130)
+                    .padding(.top, 30)
                 
                 ZStack {
                     SignUp(index: self.$index)
                         .zIndex(Double(self.index))
                     SignIn(index: self.$index)
                 }
-                
+                Spacer()
                 HStack(spacing: 15) {
                     Rectangle()
                         .fill(Color("Color3"))
@@ -69,10 +69,10 @@ struct ContentView: View {
                             .resizable()
                             .frame(width: 45, height: 45)
                 }
-            }.padding(.bottom)
+            }.padding(.bottom, 70)
             }
             .padding(.vertical)
-        }.background(Color("Color4"))
+        }.background(Color("Color4")).edgesIgnoringSafeArea(.all)
     }
 }
 
@@ -147,7 +147,7 @@ struct SignIn: View {
                     Divider()
                         .frame(height: 2)
                         .background(Color("Color3"))
-                }.padding(.horizontal).padding(.top, 30)
+                }.padding(.horizontal).padding(.top, 35)
                 
                 HStack {
                     Spacer(minLength: 0)
@@ -269,7 +269,7 @@ struct SignUp: View {
                     .clipShape(Capsule())
                     .shadow(color: .white, radius: 5, x: 0, y: 0)
             }
-            .offset(y: 18)
+            .offset(y: 21)
             .opacity(self.index == 1 ? 1 : 0)
         }
     }
